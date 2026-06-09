@@ -1,0 +1,99 @@
+{
+  "tech_name": "Marcus Rivera",
+  "tech_start": {
+    "address": "1234 Commerce Dr, Austin, TX 78741",
+    "label": "Shop / Start Location",
+    "lat": 30.2312,
+    "lng": -97.7154
+  },
+  "jobs": [
+    {
+      "id": 1,
+      "customer": "Sarah Thompson",
+      "address": "4821 Burnet Rd, Austin, TX 78756",
+      "lat": 30.3198,
+      "lng": -97.7390,
+      "job_type": "HVAC Tune-Up",
+      "window": "8:00 AM – 10:00 AM",
+      "duration_min": 60,
+      "notes": "Annual maintenance — filter replacement included"
+    },
+    {
+      "id": 2,
+      "customer": "Derek Nguyen",
+      "address": "2200 S Lamar Blvd, Austin, TX 78704",
+      "lat": 30.2467,
+      "lng": -97.7720,
+      "job_type": "AC Repair",
+      "window": "Flexible",
+      "duration_min": 90,
+      "notes": "Unit not cooling — possible refrigerant leak"
+    },
+    {
+      "id": 3,
+      "customer": "Alicia Monroe",
+      "address": "6300 Manchaca Rd, Austin, TX 78745",
+      "lat": 30.2012,
+      "lng": -97.7892,
+      "job_type": "Heating Inspection",
+      "window": "12:00 PM – 2:00 PM",
+      "duration_min": 45,
+      "notes": "Customer has a dog — call ahead"
+    },
+    {
+      "id": 4,
+      "customer": "James Kowalski",
+      "address": "1100 E 51st St, Austin, TX 78723",
+      "lat": 30.3028,
+      "lng": -97.7019,
+      "job_type": "Duct Cleaning",
+      "window": "Flexible",
+      "duration_min": 120,
+      "notes": "3-bed house, all ducts"
+    },
+    {
+      "id": 5,
+      "customer": "Priya Patel",
+      "address": "9012 Research Blvd, Austin, TX 78758",
+      "lat": 30.3901,
+      "lng": -97.7204,
+      "job_type": "Thermostat Install",
+      "window": "Flexible",
+      "duration_min": 30,
+      "notes": "Smart thermostat — Nest install"
+    },
+    {
+      "id": 6,
+      "customer": "Ron Castillo",
+      "address": "3500 Bee Cave Rd, Austin, TX 78746",
+      "lat": 30.2690,
+      "lng": -97.8104,
+      "job_type": "HVAC Tune-Up",
+      "window": "2:00 PM – 4:00 PM",
+      "duration_min": 60,
+      "notes": "New customer — referral from Thompson"
+    },
+    {
+      "id": 7,
+      "customer": "Linda Kim",
+      "address": "500 E Riverside Dr, Austin, TX 78704",
+      "lat": 30.2380,
+      "lng": -97.7334,
+      "job_type": "AC Filter Replace",
+      "window": "Flexible",
+      "duration_min": 20,
+      "notes": "Quick job — in and out"
+    },
+    {
+      "id": 8,
+      "customer": "Tom Bradley",
+      "address": "12200 N Lamar Blvd, Austin, TX 78753",
+      "lat": 30.4112,
+      "lng": -97.6923,
+      "job_type": "Emergency Repair",
+      "window": "ASAP",
+      "duration_min": 90,
+      "notes": "No AC — tenant complaint. Priority job."
+    }
+  ]
+}
