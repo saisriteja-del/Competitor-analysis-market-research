@@ -228,86 +228,163 @@ with tabs[1]:
 # TAB 3 — PRICING
 # ===========================================================================
 with tabs[2]:
-    st.subheader("Monthly Cost Comparison")
+    st.subheader("All Plans — Monthly Cost Comparison")
 
     num_techs = st.slider("Team size (technicians)", min_value=1, max_value=50, value=10, step=1)
 
-    pricing_rows = [{"Competitor": "Swivl (Scale Pro)", "Monthly Cost": swivl_monthly_cost(num_techs), "Color": "swivl"}]
-    for name, c in DIRECT_COMPETITORS.items():
-        cost = calc_monthly_cost(name, num_techs)
-        if cost is not None:
-            pricing_rows.append({"Competitor": name, "Monthly Cost": cost, "Color": c.get("threat_level", "low")})
+    # -----------------------------------------------------------------------
+    # Build one row per plan (Swivl + all competitors)
+    # -----------------------------------------------------------------------
+    def plan_cost_at(comp_data: dict, plan: dict, n: int) -> float | None:
+        model = comp_data.get("pricing_model", "")
+        base = plan.get("base")
+        if base is None:
+            return None
+        per_user = plan.get("per_user", 0) or 0
+        included = plan.get("included", 1) or 1
+        max_u = plan.get("max_users", 9999) or 9999
 
-    pricing_df = pd.DataFrame(pricing_rows).sort_values("Monthly Cost")
+        if model in ("per_user", "base_plus_per_user"):
+            return base + max(0, n - included) * per_user
+        if model == "tiered_flat":
+            if n <= max_u:
+                return float(base)
+            return base + (n - max_u) * per_user
+        return float(base)
+
+    all_plan_rows = []
+
+    # Swivl plans (unlimited users — flat regardless of team size)
+    for p in PRICING["plans"]:
+        all_plan_rows.append({
+            "Provider": "Swivl",
+            "Plan Label": f"Swivl · {p['name']}",
+            "Monthly Cost": float(p["price"]),
+            "Color": "swivl",
+            "Users": "Unlimited",
+            "Note": f"{p['credits']:,} credits/mo",
+        })
+
+    # Competitor plans
+    for name, comp in DIRECT_COMPETITORS.items():
+        for p in comp.get("plans", []):
+            cost = plan_cost_at(comp, p, num_techs)
+            if cost is None:
+                continue
+            per_user = p.get("per_user", 0) or 0
+            included = p.get("included") or "∞"
+            users_note = f"Unlimited" if not per_user else f"+${per_user}/user above {included}"
+            all_plan_rows.append({
+                "Provider": name,
+                "Plan Label": f"{name} · {p['name']}",
+                "Monthly Cost": cost,
+                "Color": comp.get("threat_level", "low"),
+                "Users": users_note,
+                "Note": p.get("note", ""),
+            })
+
+    all_plans_df = pd.DataFrame(all_plan_rows).sort_values("Monthly Cost")
 
     color_scale2 = alt.Scale(
         domain=["swivl", "high", "medium", "low"],
         range=["#0068C9", "#DC2626", "#D97706", "#16A34A"],
     )
     bar_chart = (
-        alt.Chart(pricing_df)
+        alt.Chart(all_plans_df)
         .mark_bar(cornerRadiusTopRight=4, cornerRadiusBottomRight=4)
         .encode(
-            y=alt.Y("Competitor:N", sort="-x", title=None),
+            y=alt.Y("Plan Label:N", sort=alt.SortField("Monthly Cost", order="ascending"), title=None),
             x=alt.X("Monthly Cost:Q", title="Monthly Cost ($)"),
-            color=alt.Color("Color:N", scale=color_scale2, legend=None),
-            tooltip=["Competitor", "Monthly Cost"],
+            color=alt.Color("Color:N", scale=color_scale2, legend=alt.Legend(title="Provider")),
+            tooltip=["Plan Label", "Monthly Cost", "Users", "Note"],
         )
-        .properties(height=max(280, len(pricing_rows) * 36))
+        .properties(height=max(340, len(all_plan_rows) * 28))
     )
     text_labels = (
-        alt.Chart(pricing_df)
-        .mark_text(align="left", dx=4, fontWeight="bold")
+        alt.Chart(all_plans_df)
+        .mark_text(align="left", dx=4, fontSize=11, fontWeight="bold")
         .encode(
-            y=alt.Y("Competitor:N", sort="-x"),
+            y=alt.Y("Plan Label:N", sort=alt.SortField("Monthly Cost", order="ascending")),
             x="Monthly Cost:Q",
             text=alt.Text("Monthly Cost:Q", format="$,.0f"),
         )
     )
     st.altair_chart((bar_chart + text_labels).interactive(), use_container_width=True)
 
-    swivl_cost = swivl_monthly_cost(num_techs)
-    top_threat = next(
-        (name for name, c in sorted(
+    # Savings callout — compare Swivl Scale Pro vs most threatening competitor's cheapest plan
+    swivl_scale_pro = 149.0
+    top_threat_name = next(
+        (name for name, comp in sorted(
             DIRECT_COMPETITORS.items(),
             key=lambda x: THREAT_ORDER.get(x[1].get("threat_level"), 3),
-        ) if calc_monthly_cost(name, num_techs) is not None),
+        ) if any(
+            plan_cost_at(comp, p, num_techs) is not None
+            for p in comp.get("plans", [])
+        )),
         None,
     )
-    if top_threat:
-        rival_cost = calc_monthly_cost(top_threat, num_techs)
-        if rival_cost and rival_cost > swivl_cost:
-            savings = rival_cost - swivl_cost
-            st.success(
-                f"**Swivl saves ${savings:,.0f}/mo vs. {top_threat}** at {num_techs} technicians — "
-                f"that's **${savings * 12:,.0f}/year**."
-            )
+    if top_threat_name:
+        top_comp = DIRECT_COMPETITORS[top_threat_name]
+        rival_costs = [
+            plan_cost_at(top_comp, p, num_techs)
+            for p in top_comp.get("plans", [])
+            if plan_cost_at(top_comp, p, num_techs) is not None
+        ]
+        if rival_costs:
+            rival_min = min(rival_costs)
+            if rival_min > swivl_scale_pro:
+                savings = rival_min - swivl_scale_pro
+                st.success(
+                    f"**Swivl Scale Pro saves ${savings:,.0f}/mo vs. {top_threat_name}'s cheapest plan** "
+                    f"at {num_techs} technicians — that's **${savings * 12:,.0f}/year**."
+                )
 
     st.divider()
-    st.subheader("Swivl Plan Details")
-    plan_rows = []
+
+    # Full comparison table
+    st.subheader("Plan Details Table")
+    table_rows = []
     for p in PRICING["plans"]:
-        plan_rows.append({
+        table_rows.append({
+            "Provider": "Swivl",
             "Plan": p["name"],
-            "Price": f"${p['price']}/mo",
-            "Credits": f"{p['credits']:,}",
-            "AI Receptionist": "✅" if p.get("ai_receptionist") else "❌",
+            "Monthly Cost": f"${p['price']:,}",
+            "Users": "Unlimited",
+            "Credits / Notes": f"{p['credits']:,} credits",
+            "Free Tier": "✅" if p["price"] == 0 else "—",
             "Trial": p.get("trial") or "—",
         })
-    st.dataframe(pd.DataFrame(plan_rows), hide_index=True, use_container_width=True)
-
-    with st.expander("View all competitor plan details"):
-        for name, c in DIRECT_COMPETITORS.items():
-            plans = [p for p in c.get("plans", []) if p.get("base") is not None]
-            if not plans:
+    for name, comp in DIRECT_COMPETITORS.items():
+        for p in comp.get("plans", []):
+            cost = plan_cost_at(comp, p, num_techs)
+            if cost is None:
                 continue
-            st.markdown(f"**{name}** — {c.get('pricing_model', '').replace('_', ' ').title()}")
-            rows = []
-            for p in plans:
-                base = f"${p['base']}/mo"
-                per_user = f"+${p['per_user']}/user" if p.get("per_user") else "Unlimited"
-                rows.append({"Plan": p["name"], "Base": base, "Per User": per_user, "Note": p.get("note", "")})
-            st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+            per_user = p.get("per_user", 0) or 0
+            incl = p.get("included") or "∞"
+            users_str = "Unlimited" if not per_user else f"+${per_user}/user (>{incl} incl.)"
+            table_rows.append({
+                "Provider": name,
+                "Plan": p["name"],
+                "Monthly Cost": f"${cost:,.0f}",
+                "Users": users_str,
+                "Credits / Notes": p.get("note", ""),
+                "Free Tier": "✅" if comp.get("free_tier") and p.get("base", 1) == 0 else "—",
+                "Trial": comp.get("trial") or "—",
+            })
+
+    table_df = pd.DataFrame(table_rows)
+
+    def highlight_swivl(row):
+        if row["Provider"] == "Swivl":
+            return ["background-color: #EFF6FF; font-weight: 600;"] * len(row)
+        return [""] * len(row)
+
+    st.dataframe(
+        table_df.style.apply(highlight_swivl, axis=1),
+        hide_index=True,
+        use_container_width=True,
+        height=500,
+    )
 
 # ===========================================================================
 # TAB 4 — VOICE OF CUSTOMER
