@@ -101,7 +101,7 @@ DIRECT_COMPETITORS = {
         ],
         "top_cons": [
             "Per-user pricing gets expensive fast as the team grows",
-            "No AI features — no receptionist, no estimator",
+            "AI Receptionist is a $99/mo add-on — not built in",
             "GPS tracking requires a paid add-on",
             "No free tier",
             "Limited custom reporting",
@@ -113,8 +113,8 @@ DIRECT_COMPETITORS = {
             "More polished from 13 years of refinement",
         ],
         "losses_vs_swivl": [
-            "Per-user pricing: 10-tech team = $490/mo vs. Swivl $149 flat",
-            "Zero native AI features — no receptionist, estimator, or website builder",
+            "Per-user pricing: 10-tech team = $199/mo vs. Swivl $149 flat (grows to $490 at 15 techs)",
+            "AI Receptionist is a $99/mo add-on; Swivl includes it in the base plan",
             "No free tier; 14-day trial vs. Swivl's 28-day",
             "GPS is an add-on, not built-in",
         ],
@@ -151,7 +151,7 @@ DIRECT_COMPETITORS = {
             "website_builder":          "none",
             "sms_email_automation":     "addon",
             "google_business":          "partial",
-            "ai_receptionist":          "none",
+            "ai_receptionist":          "addon",
             "ai_estimator":             "none",
             "ai_document_scanner":      "none",
             "ai_copilot":               "none",
@@ -221,7 +221,7 @@ DIRECT_COMPETITORS = {
         },
         "features": {
             "scheduling_dispatch":      "full",
-            "route_optimization":       "none",
+            "route_optimization":       "partial",
             "customer_self_scheduling": "full",
             "recurring_jobs":           "full",
             "gps_realtime":             "partial",
@@ -237,7 +237,7 @@ DIRECT_COMPETITORS = {
             "estimates":                "full",
             "payments":                 "full",
             "pricebook":                "full",
-            "commission_mgmt":          "none",
+            "commission_mgmt":          "partial",
             "quickbooks_sync":          "full",
             "customer_financing":       "full",
             "crm":                      "full",
@@ -268,7 +268,7 @@ DIRECT_COMPETITORS = {
         "ownership": "VC-backed / Pre-IPO (Bessemer, Battery, ICONIQ)",
         "est_arr": "$500M+",
         "team_size": "~2,500",
-        "threat_level": "medium",
+        "threat_level": "high",
         "pricing_model": "tiered_enterprise",
         "plans": [
             {"name": "Starter",    "base": 398,  "per_user": None, "included": None, "note": "Limited features"},
@@ -365,7 +365,7 @@ DIRECT_COMPETITORS = {
         "threat_level": "high",
         "pricing_model": "base_plus_per_user",
         "plans": [
-            {"name": "Lite",      "base": 0,   "per_user": 0,  "included": 2,  "note": "Free for 2 users"},
+            {"name": "Lite",      "base": None,"per_user": 0,  "included": 2,  "note": "Free for ≤2 users (excluded from cost calc)"},
             {"name": "Standard",  "base": 275, "per_user": 46, "included": 5,  "note": "Annual billing"},
             {"name": "Pro",       "base": 325, "per_user": 54, "included": 5,  "note": "Annual — most popular"},
             {"name": "Ultimate",  "base": None,"per_user": None,"included": None,"note": "Custom enterprise"},
@@ -397,10 +397,10 @@ DIRECT_COMPETITORS = {
         "losses_vs_swivl": [
             "No AI Estimator, AI Website Builder, or AI Copilot",
             "Annual billing required — Swivl is month-to-month",
-            "Per-user pricing above 5 users; 10 techs on Pro = $757/mo vs. Swivl $149",
+            "Per-user pricing above 5 users; 10 techs on Pro = $595/mo vs. Swivl $149",
             "Older UI and mobile experience",
         ],
-        "how_to_beat": "'Workiz is great if your team lives on the phone — but you're still estimating manually and paying per seat. Swivl's AI Receptionist handles calls AND creates leads automatically. At 10 techs, Workiz Pro is $757/mo; Swivl Scale Pro is $149/mo.'",
+        "how_to_beat": "'Workiz is great if your team lives on the phone — but you're still estimating manually and paying per seat. Swivl's AI Receptionist handles calls AND creates leads automatically. At 10 techs, Workiz Pro is $595/mo; Swivl Scale Pro is $149/mo — that's $5,352/yr back in your pocket.'",
         "objection_handling": {
             "We need the VOIP features": "Swivl's AI Receptionist handles inbound calls 24/7, qualifies leads, and books directly into your CRM. That's more than call tracking — and it works while you're on another job.",
         },
@@ -454,10 +454,10 @@ DIRECT_COMPETITORS = {
         "est_arr": "$20M–$50M est.",
         "team_size": "~200",
         "threat_level": "medium",
-        "pricing_model": "per_user_contact",
+        "pricing_model": "per_user",
         "plans": [
-            {"name": "Select",  "base": None, "per_user": None, "included": None, "note": "Contact sales — est. $125+/user/mo"},
-            {"name": "Premium", "base": None, "per_user": None, "included": None, "note": "Contact sales"},
+            {"name": "Select",  "base": 0, "per_user": 100, "included": 1, "note": "Est. ~$100/user/mo + $500–2K setup (contact sales)"},
+            {"name": "Premium", "base": 0, "per_user": 125, "included": 1, "note": "Est. ~$125/user/mo (contact sales)"},
         ],
         "free_tier": False,
         "trial": "Demo only",
@@ -489,8 +489,12 @@ DIRECT_COMPETITORS = {
             "No free tier",
             "Higher cost per user vs. Swivl's flat unlimited rate",
         ],
-        "how_to_beat": "Transparency and AI. 'FieldEdge requires a sales call before you can even see the price. Swivl is $149/mo, unlimited users, sign up today. And we built AI into the core — things FieldEdge has never built.'",
-        "objection_handling": {},
+        "how_to_beat": "Transparency and AI. 'FieldEdge requires a sales call before you can even see the price. At 10 techs you're paying $1,000–1,250/mo. Swivl is $149/mo flat, unlimited users, sign up today. And we built AI into the core — things FieldEdge has never built and has no roadmap for.'",
+        "objection_handling": {
+            "FieldEdge is built for HVAC specifically": "Swivl is also built for HVAC, plumbing, and electrical — not generic FSM. Our pricebook, service agreements, and job types are all trades-specific. You get the same domain depth plus AI and GPS that FieldEdge doesn't offer.",
+            "We like our FieldEdge account manager": "Swivl has real human support too. The difference is you're not locked into a $1K+/mo contract — if support ever drops, you can leave. With FieldEdge you can't.",
+            "FieldEdge has a great pricebook": "We do too — flat-rate pricing, service agreements, and technician scorecards are all in Swivl. Plus our AI Estimator drafts quotes automatically from job notes. FieldEdge has never shipped anything like that.",
+        },
         "features": {
             "scheduling_dispatch":      "full",
             "route_optimization":       "none",
@@ -541,9 +545,10 @@ DIRECT_COMPETITORS = {
         "est_arr": "$5M–$15M est.",
         "team_size": "~50",
         "threat_level": "medium",
-        "pricing_model": "per_user_contact",
+        "pricing_model": "per_user",
         "plans": [
-            {"name": "Standard", "base": None, "per_user": None, "included": None, "note": "Contact sales — est. $60–99/user/mo"},
+            {"name": "Standard", "base": 89, "per_user": 30,  "included": 1, "note": "Est. ~$89/mo + $30/additional user"},
+            {"name": "Plus",     "base": 89, "per_user": 30,  "included": 1, "note": "With Operator AI + Chat AI add-ons ~$150+/mo"},
         ],
         "free_tier": False,
         "trial": "14-day",
@@ -560,7 +565,7 @@ DIRECT_COMPETITORS = {
         ],
         "top_cons": [
             "Contact-us pricing — no transparent self-serve",
-            "No AI features",
+            "AI only as paid add-ons (Operator AI + Chat AI) — not built into base plan",
             "Basic reporting",
             "No free tier",
             "Limited integration ecosystem",
@@ -570,7 +575,7 @@ DIRECT_COMPETITORS = {
             "Exceptional support reputation",
         ],
         "losses_vs_swivl": [
-            "No AI features at all",
+            "AI Receptionist (Operator AI) is a paid add-on; Swivl includes it in the plan",
             "No transparent pricing — requires a sales call",
             "No free tier",
             "No website builder or customer acquisition tools",
@@ -606,7 +611,7 @@ DIRECT_COMPETITORS = {
             "website_builder":          "none",
             "sms_email_automation":     "partial",
             "google_business":          "none",
-            "ai_receptionist":          "none",
+            "ai_receptionist":          "addon",
             "ai_estimator":             "none",
             "ai_document_scanner":      "none",
             "ai_copilot":               "none",
@@ -631,9 +636,9 @@ DIRECT_COMPETITORS = {
         "threat_level": "medium",
         "pricing_model": "flat_unlimited_users",
         "plans": [
-            {"name": "Starter", "base": 195, "per_user": 0, "included": None, "note": "Unlimited users"},
-            {"name": "Plus",    "base": 295, "per_user": 0, "included": None, "note": "Unlimited users"},
-            {"name": "Pro",     "base": 395, "per_user": 0, "included": None, "note": "Unlimited users"},
+            {"name": "Starter", "base": 208, "per_user": 0, "included": None, "note": "Unlimited users — annual billing"},
+            {"name": "Plus",    "base": 325, "per_user": 0, "included": None, "note": "Unlimited users — annual billing"},
+            {"name": "Pro",     "base": 533, "per_user": 0, "included": None, "note": "Unlimited users — annual billing"},
         ],
         "free_tier": False,
         "trial": "14-day",
@@ -649,7 +654,7 @@ DIRECT_COMPETITORS = {
             "Feature-complete for core FSM workflows",
         ],
         "top_cons": [
-            "Entry price $195/mo vs. Swivl's $149",
+            "Entry price $208/mo vs. Swivl's $149",
             "No free tier",
             "No AI Receptionist or AI Estimator",
             "PE-owned — product velocity slower",
@@ -660,13 +665,16 @@ DIRECT_COMPETITORS = {
             "Same flat-rate unlimited-user pricing philosophy",
         ],
         "losses_vs_swivl": [
-            "No free tier ($195 entry vs. Swivl's $0 Starter)",
+            "No free tier ($208 entry vs. Swivl's $0 Starter)",
             "No AI Receptionist, AI Estimator, or AI Website Builder",
-            "Higher price floor ($195 vs. $149 for comparable plan)",
+            "Higher price floor ($208 vs. $149 for comparable plan)",
             "No PLG — requires a sales conversation",
         ],
-        "how_to_beat": "'You already like flat-rate pricing — smart. Service Fusion starts at $195 with no free tier. Swivl starts free, grows to $149 for the full AI suite. Same model, better product, lower price.'",
-        "objection_handling": {},
+        "how_to_beat": "'You already like flat-rate pricing — smart. Service Fusion starts at $208 with no free tier. Swivl starts free, grows to $149 for the full AI suite. Same model, better product, lower price. And Swivl is month-to-month — Service Fusion requires annual commitment.'",
+        "objection_handling": {
+            "Service Fusion also has unlimited users": "Exactly — same philosophy, different execution. Swivl is $41/mo cheaper, month-to-month, has AI built in, and was designed for contractors specifically. Service Fusion is PE-owned and hasn't shipped a major feature in years.",
+            "We've been on Service Fusion for years": "Loyalty is earned. Ask yourself: in the last 2 years, what meaningful new capabilities has Service Fusion shipped? Swivl shipped an AI Receptionist, AI Estimator, Website Builder, and GPS — all included in $149/mo.",
+        },
         "features": {
             "scheduling_dispatch":      "full",
             "route_optimization":       "none",
@@ -717,11 +725,11 @@ DIRECT_COMPETITORS = {
         "est_arr": "$10M–$20M est.",
         "team_size": "~100",
         "threat_level": "low",
-        "pricing_model": "tiered_contact",
+        "pricing_model": "tiered_flat",
         "plans": [
-            {"name": "Basic",     "base": 169, "per_user": None, "included": None, "note": "Contact sales"},
-            {"name": "Standard",  "base": 299, "per_user": None, "included": None, "note": "Contact sales"},
-            {"name": "Enterprise","base": None, "per_user": None, "included": None, "note": "Custom"},
+            {"name": "Basic",     "base": 169, "per_user": 0, "included": None, "max_users": 9999, "note": "Unlimited users"},
+            {"name": "Standard",  "base": 299, "per_user": 0, "included": None, "max_users": 9999, "note": "Unlimited users"},
+            {"name": "Enterprise","base": 499, "per_user": 0, "included": None, "max_users": 9999, "note": "Custom enterprise"},
         ],
         "free_tier": False,
         "trial": "14-day",
@@ -753,7 +761,10 @@ DIRECT_COMPETITORS = {
             "Higher entry ($169) with no free tier vs. Swivl's $0 Starter",
         ],
         "how_to_beat": "The Angi angle is a layup. 'mHelpDesk is owned by Angi — the lead marketplace that charges you 20% commissions. Swivl helps you break free from those fees with your own website, leads, and AI. And we have GPS built in. mHelpDesk doesn't.'",
-        "objection_handling": {},
+        "objection_handling": {
+            "mHelpDesk is cheaper": "mHelpDesk Basic is $169/mo. Swivl Scale Pro is $149/mo — actually cheaper, with GPS, AI Receptionist, and a website builder that mHelpDesk doesn't have at any price.",
+            "We already use Angi for leads": "That's exactly why switching makes sense. mHelpDesk is owned by Angi — your FSM software is feeding leads back to the same marketplace charging you 20% per job. Swivl builds you a direct channel so you own your customers.",
+        },
         "features": {
             "scheduling_dispatch":      "full",
             "route_optimization":       "none",
@@ -806,7 +817,7 @@ DIRECT_COMPETITORS = {
         "threat_level": "low",
         "pricing_model": "tiered_flat",
         "plans": [
-            {"name": "Free",     "base": 0,   "per_user": 0, "included": 1,  "max_users": 1},
+            {"name": "Free",     "base": None,"per_user": 0, "included": 1,  "max_users": 1,  "note": "Free tier — excluded from cost calc"},
             {"name": "Lite",     "base": 19,  "per_user": 0, "included": 2,  "max_users": 2},
             {"name": "Standard", "base": 69,  "per_user": 0, "included": 5,  "max_users": 5},
             {"name": "Business", "base": 129, "per_user": 0, "included": 10, "max_users": 10},
@@ -841,7 +852,10 @@ DIRECT_COMPETITORS = {
             "No offline mobile capability",
         ],
         "how_to_beat": "Kickserv customers are ready to graduate. 'Kickserv is great for getting started. When you want GPS, AI writing your estimates, and an AI receptionist answering calls at night — that's Swivl. Our free plan covers everything Kickserv charges for.'",
-        "objection_handling": {},
+        "objection_handling": {
+            "Kickserv is really cheap": "Swivl's free plan is literally $0 — same price as Kickserv's free tier, with GPS, quotes, and invoicing included. When you're ready to grow, our $49/mo Growth plan costs less than Kickserv's $69 Standard.",
+            "We've been on Kickserv for years and it works fine": "Fine is the ceiling — Kickserv doesn't grow with you. No GPS, no AI, no offline mobile. The moment you hit 5+ techs or want to stop manually chasing reviews, Kickserv becomes a bottleneck. That's when Swivl customers switch.",
+        },
         "features": {
             "scheduling_dispatch":      "partial",
             "route_optimization":       "none",
@@ -894,8 +908,8 @@ DIRECT_COMPETITORS = {
         "threat_level": "low",
         "pricing_model": "per_user",
         "plans": [
-            {"name": "Field Agent", "base": None, "per_user": 30, "included": None, "note": "Per user/month"},
-            {"name": "Supervisor",  "base": None, "per_user": 45, "included": None, "note": "Per user/month"},
+            {"name": "Field Agent", "base": 0, "per_user": 30, "included": 1, "note": "Per user/month — field technician role"},
+            {"name": "Supervisor",  "base": 0, "per_user": 45, "included": 1, "note": "Per user/month — dispatcher/admin role"},
         ],
         "free_tier": False,
         "trial": "15-day",
@@ -928,7 +942,10 @@ DIRECT_COMPETITORS = {
             "Lowest review volume of any direct competitor",
         ],
         "how_to_beat": "'If you live in Zoho, Zoho FSM makes sense. If you're a trades contractor who wants software built specifically for plumbing, HVAC, or electrical — Swivl was built for you. Same price range, but the AI and GPS are in a different league.'",
-        "objection_handling": {},
+        "objection_handling": {
+            "We already use other Zoho products": "Integration is valuable — but Zoho FSM is a generic field service tool, not built for trades. You'd still need to configure everything from scratch. Swivl connects with Zoho Books via API and is ready to run on day one, purpose-built for contractors.",
+            "Zoho is cheaper since we already pay for Zoho One": "At $30–45/user, a 10-tech team on Zoho FSM costs $300–450/mo. Swivl Scale Pro is $149/mo flat for unlimited users — that's a meaningful saving, plus you get AI features Zoho FSM doesn't have.",
+        },
         "features": {
             "scheduling_dispatch":      "full",
             "route_optimization":       "partial",
@@ -965,6 +982,112 @@ DIRECT_COMPETITORS = {
             "time_reports":             "full",
             "gps_mileage_reports":      "partial",
             "revenue_dashboard":        "full",
+        },
+    },
+
+    "Zuper": {
+        "display_name": "Zuper",
+        "url":          "https://www.zuper.co",
+        "one_liner":    "AI-powered FSM platform built for multi-trade contractors with strong enterprise integrations.",
+        "founded":      "2019",
+        "hq":           "Seattle, WA",
+        "funding":      "$19M raised",
+        "ownership":    "VC-backed",
+        "est_arr":      "~$8M ARR",
+        "team_size":    "~150",
+        "threat_level": "high",
+        "pricing_model": "per_user",
+        "plans": [
+            {"name": "Starter",  "base": 0, "per_user": 50,  "included": 1, "note": "~$50/user/mo — quote-based annual contract"},
+            {"name": "Core",     "base": 0, "per_user": 89,  "included": 1, "note": "~$89/user/mo — route optimization, asset mgmt"},
+            {"name": "Premium",  "base": 0, "per_user": 150, "included": 1, "note": "~$150/user/mo — full feature set"},
+        ],
+        "free_tier": False,
+        "trial":     "14-day",
+        "tagline":   "Field Service, Your Way",
+        "g2_rating":        4.6,
+        "capterra_rating":  4.6,
+        "g2_reviews":       80,
+        "capterra_reviews": 60,
+        "top_pros": [
+            "Highly configurable workflows — adapts to any trade",
+            "Strong Salesforce & QuickBooks integrations",
+            "Good mobile app (iOS 4.5★, Android 4.3★) with offline mode",
+            "Responsive customer support and onboarding team",
+            "Good multi-location / multi-team support",
+        ],
+        "top_cons": [
+            "Expensive at scale — per-user pricing hurts growing teams",
+            "No flat-rate pricebook — estimating is basic",
+            "Some features feel incomplete vs. established platforms",
+            "Annual contract required; no month-to-month",
+            "Smaller user community and fewer third-party integrations than Jobber/ServiceTitan",
+        ],
+        "wins_vs_swivl": [
+            "Better enterprise integrations (Salesforce, SAP, custom ERP)",
+            "Stronger asset & preventive maintenance tracking",
+            "More configurable for multi-trade or multi-location orgs",
+        ],
+        "losses_vs_swivl": [
+            "Swivl is flat-rate unlimited users — Zuper's per-user model is 3–5× more expensive at 5+ techs",
+            "Swivl has a true AI Receptionist; Zuper has no inbound call automation",
+            "Swivl includes a website builder; Zuper has none",
+            "Swivl has customer financing built in; Zuper does not",
+        ],
+        "how_to_beat": (
+            "Lead with TCO: a 10-tech team on Zuper Core costs ~$890/mo vs. Swivl Scale Pro at $149 flat. "
+            "That's $8,900/yr more for roughly equivalent scheduling and mobile features. "
+            "Highlight Swivl's AI Receptionist (never miss a lead) and website builder — two revenue-generating tools "
+            "Zuper doesn't offer. If prospect values Salesforce integration, acknowledge it, then ask if they actually "
+            "use Salesforce today — most SMBs don't, and Zuper charges enterprise rates for features SMBs don't need."
+        ),
+        "objection_handling": {
+            "Zuper is more configurable": (
+                "True — but configurable also means complex to set up and maintain. "
+                "Swivl is purpose-built for 1–30 tech home service businesses and gets you live in days, not months."
+            ),
+            "We need Salesforce integration": (
+                "Swivl integrates with QuickBooks and has open API access. "
+                "If you're a sub-$5M rev home service business, you likely don't need a Salesforce CRM — "
+                "let's show you how Swivl's built-in CRM handles your leads."
+            ),
+        },
+        "features": {
+            "scheduling_dispatch":       "full",
+            "route_optimization":        "full",
+            "customer_self_scheduling":  "partial",
+            "recurring_jobs":            "full",
+            "gps_realtime":              "full",
+            "gps_reports":               "full",
+            "job_costing":               "partial",
+            "offline_mobile":            "full",
+            "photos_docs":               "full",
+            "digital_signatures":        "full",
+            "asset_management":          "full",
+            "inventory":                 "partial",
+            "subcontractor_mgmt":        "partial",
+            "invoicing":                 "full",
+            "estimates":                 "partial",
+            "payments":                  "full",
+            "pricebook":                 "none",
+            "commission_mgmt":           "none",
+            "quickbooks_sync":           "full",
+            "customer_financing":        "none",
+            "crm":                       "partial",
+            "lead_management":           "partial",
+            "reviews_reputation":        "partial",
+            "website_builder":           "none",
+            "sms_email_automation":      "full",
+            "google_business":           "partial",
+            "ai_receptionist":           "none",
+            "ai_estimator":              "partial",
+            "ai_document_scanner":       "partial",
+            "ai_copilot":                "partial",
+            "ai_text_generation":        "partial",
+            "job_reports":               "full",
+            "time_reports":              "full",
+            "gps_mileage_reports":       "full",
+            "revenue_dashboard":         "full",
         },
     },
 }
@@ -1092,19 +1215,19 @@ def calc_monthly_cost(competitor_key: str, num_techs: int) -> float | None:
         return best if best != float("inf") else None
 
     if model == "tiered_flat":
-        best = float("inf")
+        eligible = []
         for p in plans:
             base = p.get("base")
             max_u = p.get("max_users") or 9999
             per_user = p.get("per_user", 0)
+            included = p.get("included") or max_u
             if base is None:
                 continue
-            if num_techs <= max_u:
-                cost = base
-            else:
-                cost = base + (num_techs - max_u) * per_user
-            best = min(best, cost)
-        return best if best != float("inf") else None
+            if num_techs > max_u:
+                continue  # team exceeds this plan's hard user cap
+            cost = base + max(0, num_techs - included) * per_user
+            eligible.append(cost)
+        return min(eligible) if eligible else None
 
     if model == "tiered_enterprise":
         base = min((p["base"] for p in plans if p.get("base")), default=None)
